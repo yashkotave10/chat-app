@@ -9,6 +9,8 @@ export const getUsersForSidebar = async (req, res) => {
     const loggedInUserId = req.user._id;
     const filteredUsers = await User.find({ _id: { $ne: loggedInUserId } }).select("-password");
 
+    // $ne - use kiya he to remove current loggedIn user
+
     res.status(200).json(filteredUsers);
   } catch (error) {
     console.error("Error in getUsersForSidebar: ", error.message);
@@ -27,6 +29,7 @@ export const getMessages = async (req, res) => {
         { senderId: userToChatId, receiverId: myId },
       ],
     });
+    // $or operator is used to match documents that satisfy at least one of the specified conditions.
 
     res.status(200).json(messages);
   } catch (error) {
@@ -43,7 +46,8 @@ export const sendMessage = async (req, res) => {
 
     let imageUrl;
     if (image) {
-      // Upload base64 image to cloudinary
+      // Upload image to Cloudinary
+
       const uploadResponse = await cloudinary.uploader.upload(image);
       imageUrl = uploadResponse.secure_url;
     }
@@ -58,6 +62,7 @@ export const sendMessage = async (req, res) => {
     await newMessage.save();
 
     const receiverSocketId = getReceiverSocketId(receiverId);
+    // getReceiverSocketId function se socket id milta he
     if (receiverSocketId) {
       io.to(receiverSocketId).emit("newMessage", newMessage);
     }
