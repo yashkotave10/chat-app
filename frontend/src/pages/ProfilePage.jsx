@@ -6,6 +6,7 @@ const ProfilePage = () => {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
   const [selectedImg, setSelectedImg] = useState(null);
 
+
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -73,7 +74,7 @@ const ProfilePage = () => {
                 <Mail className="w-4 h-4" />
                 Name
               </div>
-              <p className="px-4 py-2.5 bg-base-200 rounded-lg border">{authUser.fullName}</p>
+              <p className="px-4 py-2.5 bg-base-200 rounded-lg border">{authUser.fullName || authUser.name}</p>
           </div>
 
             {/* Email */}
