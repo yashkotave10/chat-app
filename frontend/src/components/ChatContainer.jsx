@@ -3,9 +3,9 @@ import { useEffect, useRef } from "react";
 
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
-import MessageSkeleton from "./skeletons/MessageSkeleton";
 import { useAuthStore } from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
+import { Loader, Loader2 } from "lucide-react";
 
 const ChatContainer = () => {
   const {
@@ -35,14 +35,11 @@ const ChatContainer = () => {
 
   if (isMessagesLoading) {
     return (
-      <div className="flex-1 flex flex-col overflow-auto">
-        <ChatHeader />
-        <MessageSkeleton />
-        <MessageInput />
+      <div className="flex justify-center items-center w-[55vw] h-full">
+        <Loader/>
       </div>
     );
   }
-
   return (
     <div className="flex-1 flex flex-col overflow-auto">
       <ChatHeader />
