@@ -7,11 +7,18 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://my-chat-orpin.vercel.app"],
+    origin: "https://my-chat-orpin.vercel.app",
     credentials: true,
   },
 });
 
+//for local testing
+// const io = new Server(server, {
+//   cors: {
+//     origin: ["http://localhost:5173"],
+//     credentials: true,
+//   },
+// });
 
 
 
