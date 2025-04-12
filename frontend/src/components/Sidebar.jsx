@@ -70,12 +70,12 @@ const Sidebar = () => {
                 hover:bg-indigo-50 transition-colors
                 ${selectedUser?._id === user._id ? "bg-indigo-50 ring-1 ring-indigo-100" : ""}
               `}
-              aria-label={`Select chat with ${user.name}`}
+              aria-label={`Select chat with ${user.name || user.fullName}`}
             >
               <div className="relative mx-auto sm:mx-0">
                 <img
                   src={user.profilePic || "/avatar.png"}
-                  alt={`${user.name}'s avatar`}
+                  alt={`${user.name || user.fullName}'s avatar`}
                   className="size-10 object-cover rounded-full"
                 />
                 {onlineUsers.includes(user._id) && (
@@ -83,7 +83,7 @@ const Sidebar = () => {
                 )}
               </div>
               <div className="hidden sm:block text-left min-w-0">
-                <div className="text-sm font-medium text-gray-900 truncate">{user.name}</div>
+                <div className="text-sm font-medium text-gray-900 truncate">{user.name || user.fullName}</div>
                 <div className="text-xs text-gray-500">
                   {onlineUsers.includes(user._id) ? "Online" : "Offline"}
                 </div>
