@@ -8,8 +8,12 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: ["https://my-chat-orpin.vercel.app"],
+    credentials: true,
   },
 });
+
+
+
 
 export function getReceiverSocketId(userId) {
   return userSocketMap[userId];
