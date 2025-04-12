@@ -73,7 +73,7 @@ const ProfilePage = () => {
                 <Mail className="w-4 h-4" />
                 Name
               </div>
-              <p className="px-4 py-2.5 bg-base-200 rounded-lg border">{authUser.name}</p>
+              <p className="px-4 py-2.5 bg-base-200 rounded-lg border">{authUser.fullName}</p>
           </div>
 
             {/* Email */}
