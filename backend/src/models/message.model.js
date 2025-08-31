@@ -18,6 +18,11 @@ const messageSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+    intent: {
+      type: String,
+      enum: ["casual", "urgent", "reminder", "abusive", "toxic"],
+      default: "casual",
+    },
   },
   { timestamps: true }
 );

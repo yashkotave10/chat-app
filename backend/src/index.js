@@ -10,7 +10,7 @@ import { connectDB } from "./lib/db.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { app, server } from "./lib/socket.js";
-
+import intentRoutes from "./routes/intent.routes.js"
 dotenv.config();
 
 const PORT = process.env.PORT || 5001;
@@ -19,24 +19,25 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "https://my-chat-orpin.vercel.app",
-    credentials: true,
-  })
-);
-
-// for local testing
 // app.use(
 //   cors({
-//     origin: "http://localhost:5173",
+//     origin: "https://my-chat-orpin.vercel.app",
 //     credentials: true,
 //   })
 // );
 
+// for local testing
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.use("/api", intentRoutes);
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static(path.join(__dirname, "../frontend/dist")));

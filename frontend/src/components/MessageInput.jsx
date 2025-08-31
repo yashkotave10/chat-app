@@ -33,12 +33,30 @@ const MessageInput = () => {
     if (!text.trim() && !imagePreview) return;
 
     try {
+      let detectedIntent = "casual";
+
+      if (text.trim()) {
+        const res = await fetch("http://localhost:5001/api/detect-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          console.log(data)
+          detectedIntent = data.intent || "kuchx";
+        } else {
+          console.warn("Intent detection failed");
+        }
+      }
+
       await sendMessage({
         text: text.trim(),
         image: imagePreview,
+        intent: detectedIntent, 
       });
 
-      // Clear form
       setText("");
       setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -106,4 +124,5 @@ const MessageInput = () => {
     </div>
   );
 };
+
 export default MessageInput;
