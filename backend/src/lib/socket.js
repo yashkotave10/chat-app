@@ -5,23 +5,18 @@ import express from "express";
 const app = express();
 const server = http.createServer(app);
 
-// const io = new Server(server, {
-//   cors: {
-//     origin: "https://my-chat-orpin.vercel.app",
-//     maxAge: 86400000,
-//     methods: ["GET", "POST"],
-//     credentials: true,
-//   },
-// });
-
-// for local testing
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173"],
-    credentials: true,
+    origin: [
+      "https://chat-app-with-intent-detection.vercel.app",
+      "http://localhost:5173" // add more origins if needed
+    ],
     methods: ["GET", "POST"],
+    credentials: true,
+    maxAge: 86400000,
   },
 });
+
 
 
 
