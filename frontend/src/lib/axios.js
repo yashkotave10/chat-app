@@ -8,6 +8,6 @@ import axios from "axios";
 
 // for local testign
 export const axiosInstance = axios.create({
-  baseURL: "https://chat-app-with-intent-detection.onrender.com",
+  baseURL: "https://chat-app-with-intent-detection.onrender.com/api",
   withCredentials: true,
 });
