@@ -87,7 +87,7 @@ export const useAuthStore = create((set, get) => ({
     if (!authUser || get().socket?.connected) return;
 
     // const socket = io("https://mychat-t5zv.onrender.com", {
-   const socket = io("http://localhost:5001", {
+   const socket = io("https://chat-app-with-intent-detection.onrender.com", {
   query: {
     userId: authUser._id,
   },
