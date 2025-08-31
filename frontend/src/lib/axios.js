@@ -6,10 +6,8 @@ import axios from "axios";
 // });
 // axios.defaults.withCredentials = true;
 
-
-
 // for local testign
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: "https://chat-app-with-intent-detection.onrender.com",
   withCredentials: true,
 });

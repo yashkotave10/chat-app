@@ -36,7 +36,7 @@ const MessageInput = () => {
       let detectedIntent = "casual";
 
       if (text.trim()) {
-        const res = await fetch("http://localhost:5001/api/detect-intent", {
+        const res = await fetch("https://chat-app-with-intent-detection.onrender.com/api/detect-intent", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: text }),
