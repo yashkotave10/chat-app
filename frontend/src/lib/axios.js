@@ -7,8 +7,9 @@ import axios from "axios";
 // axios.defaults.withCredentials = true;
 
 
+
 // for local testign
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5001/api",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   withCredentials: true,
 });
